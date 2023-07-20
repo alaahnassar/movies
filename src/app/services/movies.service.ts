@@ -10,8 +10,6 @@ export class MoviesService {
   apiBaseURL = 'https://api.themoviedb.org/3';
   nestedURL = '/discover/movie';
   getByIdURL = '/movie/';
-  // private dataSubject = new BehaviorSubject<any>(null);
-  // public searchData$ = this.dataSubject.asObservable();
   constructor(private _http: HttpClient) {}
 
   getAll(page: number): Observable<Movie> {
@@ -21,8 +19,4 @@ export class MoviesService {
   getById(id: any): Observable<Movie> {
     return this._http.get(`${this.apiBaseURL}${this.getByIdURL}/${id}`);
   }
-
-  // search(query: any): Observable<Movie> {
-  //   return this._http.get(`${this.apiBaseURL}/search/movie?query=${query}`);
-  // }
 }
