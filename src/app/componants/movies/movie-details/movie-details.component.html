@@ -1,1 +1,58 @@
-<p>movie-details works!</p>
+<div class="container">
+  <div class="row py-5">
+    <div class="card my-5 px-0 col-12 border-0">
+      <div class="row g-0">
+        <!-- Column for the image -->
+        <div class="col-md-4">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="card-img object-fit-cover "
+            height="450px" width="100%" alt="..." />
+        </div>
+
+        <!-- Column for the content -->
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4 class="card-title py-1 fw-bold">
+              {{ movie?.title }}
+            </h4>
+
+            <p class="card-text py-1">
+              {{ movie?.overview }}
+            </p>
+
+            <div class="py-1">
+              <p>
+                <b>Spoken Languages: </b>
+                <span class="badge bg-secondary m-1" *ngFor="let lang of movie?.spoken_languages">{{ lang?.name
+                  }}</span>
+              </p>
+            </div>
+            <div class="py-1">
+              <p>
+                <b>Production Countries: </b>
+                <span class="badge bg-success m-1" *ngFor="let country of movie?.production_countries">{{ country?.name
+                  }}</span>
+              </p>
+            </div>
+            <div class="py-1">
+              <p>
+                <b>Tag Line: </b>
+                <span class="badge bg-warning m-1">{{ movie?.tagline }}</span>
+              </p>
+            </div>
+            <div class="py-1">
+              <p>
+                <b>Date: </b>{{ movie?.release_date }}
+              </p>
+            </div>
+            <div class="py-1 float-end">
+              <a routerLink="/" class="btn btn-success mx-2">Go Back</a>
+              <a href="https://fastxmovie.com" class="btn btn-danger mx-2" target="_blank">
+                Watch movie
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,12 +9,11 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class AllMoviesComponent {
   movies: any;
   totalPages?: number = 0;
-  _page: number = 1;
-  p: number = 1;
+  private currentpages: number = 1;
 
   constructor(private _movieService: MoviesService) {}
   ngOnInit(): void {
-    this._movieService.getAll(this._page).subscribe({
+    this._movieService.getAll(this.currentpages).subscribe({
       next: (res) => {
         this.movies = res.results;
         this.totalPages = res.total_pages;
@@ -37,10 +36,10 @@ export class AllMoviesComponent {
   }
 
   public set page(value: number) {
-    this._page = value;
+    this.currentpages = value;
     this.updateData(value);
   }
   get page() {
-    return this._page;
+    return this.currentpages;
   }
 }

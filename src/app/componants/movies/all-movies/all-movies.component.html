@@ -1,25 +1,26 @@
 <div class="container">
-  <div class="row justify-content-around">
+  <div class="row justify-content-center text-center">
     <!-- Movies -->
-    <div class="text-center">
-      <h2 class="my-4 fs-3">Our Popular Collection For You</h2>
+    <div>
+      <h2 class="my-5 fs-2 fw-bold">Our Popular Collection For You</h2>
     </div>
 
-    <div *ngFor="let m of movies | paginate: { itemsPerPage: 20, currentPage: page, totalItems: totalPages }"
+    <div *ngFor="let movie of movies | paginate: { itemsPerPage: 20, currentPage: page, totalItems: totalPages }"
       class="col-12 col-md-4 col-lg-3 p-2 m-3">
-      <div class="card">
-        <a style="text-decoration: none; color: inherit; cursor: pointer; border: none; background: none;"
-          routerLink="/movie/{{ m.id }}/details">
-          <img [src]="'https://image.tmdb.org/t/p/w500/' + m.poster_path"
-            class="card-img-top img-responsive object-fit-cover border border-1 rounded-1">
+      <div class="card border-0">
+        <a routerLink="/movie/{{ movie.id }}/details">
+          <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
+            class="card-img-top img-responsive object-fit-cover " height="350">
 
         </a>
 
         <div class="card-body">
-          <h5 class="card-title">{{ m.title | slice:0:20 }}{{ m.overview.length > 150 ? '...' : '' }}</h5>
-          <p class="card-text">{{ m.overview| json|lineBreak:4}}</p>
-          <div class="card-text">
-            {{ m.release_date | date: 'dd MMM yyyy' }}
+          <h5 class="card-title fw-semibold py-2">{{ movie.title | slice:0:25 }}{{ movie.overview.length > 25 ? '...' :
+            '' }}
+          </h5>
+          <p class="card-text">{{ movie.overview | slice:0:150 }}{{ movie.overview.length > 150 ? '...' : ''}}</p>
+          <div class="card-text badge bg-success p-2">
+            {{ movie.release_date | date: ' yyyy' }}
           </div>
         </div>
       </div>
