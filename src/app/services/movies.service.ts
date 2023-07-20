@@ -10,8 +10,8 @@ export class MoviesService {
   apiBaseURL = 'https://api.themoviedb.org/3';
   nestedURL = '/discover/movie';
   getByIdURL = '/movie/';
-  private dataSubject = new BehaviorSubject<any>(null);
-  public searchData$ = this.dataSubject.asObservable();
+  // private dataSubject = new BehaviorSubject<any>(null);
+  // public searchData$ = this.dataSubject.asObservable();
   constructor(private _http: HttpClient) {}
 
   getAll(page: number): Observable<Movie> {
