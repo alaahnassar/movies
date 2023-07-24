@@ -12,11 +12,11 @@ export class MoviesService {
   getByIdURL = '/movie/';
   constructor(private _http: HttpClient) {}
 
-  getAll(page: number): Observable<Movie> {
+  getAll(page: number): Observable<any> {
     return this._http.get(`${this.apiBaseURL}${this.nestedURL}?page=${page}`);
   }
 
-  getById(id: any): Observable<Movie> {
-    return this._http.get(`${this.apiBaseURL}${this.getByIdURL}/${id}`);
+  getById(id: any): Observable<any> {
+    return this._http.get<Movie>(`${this.apiBaseURL}${this.getByIdURL}/${id}`);
   }
 }
